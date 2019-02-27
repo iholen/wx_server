@@ -6,6 +6,9 @@ set :application, "wx_server"
 set :repo_url, "git@github.com:iholen/wx_server.git"
 set :user, "deploy"
 
+# set :rvm_type, :user
+# set :rvm_ruby_version, '2.3.7'
+
 # set :stages, %w(staging production)
 # set :default_stage, "staging"
 
