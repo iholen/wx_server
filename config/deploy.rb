@@ -59,6 +59,7 @@ set :puma_error_log,  "#{release_path}/log/puma.access.log"
 set :puma_preload_app, true
 set :puma_worker_timeout, nil
 set :puma_init_active_record, false
+set :puma_env, fetch(:rails_env, 'production')
 
 namespace :puma do
   desc 'Create Directories for Puma Pids and Socket'
@@ -102,7 +103,6 @@ namespace :deploy do
   before :starting,     :check_revision
   after  :finishing,    :compile_assets
   after  :finishing,    :cleanup
-  # after  :finishing,    :restart
 end
 
 # ps aux | grep puma    # Get puma pid
