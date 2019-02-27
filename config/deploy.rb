@@ -7,6 +7,8 @@ set :repo_url, "git@github.com:iholen/wx_server.git"
 # Default branch is :master
 set branch: :master
 
+set :default_stage, "production"
+
 set :user, "deploy"
 
 set :rvm_type, :user
