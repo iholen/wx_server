@@ -1,7 +1,7 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.11.0"
 
-set :rails_env, "staging"
+set :rails_env, "production"
 set :application, "wx_server"
 set :repo_url, "git@github.com:iholen/wx_server.git"
 # Default branch is :master
