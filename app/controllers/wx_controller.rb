@@ -9,6 +9,11 @@ class WxController < ApplicationController
 
   def handle
     Rails.logger.info("params: ===>" + params.inspect)
+    xml_data = request.body
+    Rails.logger.info("body: ===>" + xml_data.inspect)
+    Rails.logger.info("xml: ===>" + Hash.from_xml(xml_data)['xml'])
+
+    render plain: 'success'
   end
 
 	private
