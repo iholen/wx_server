@@ -1,8 +1,8 @@
 class WxController < ApplicationController
 
 	def index
-		return render text: params[:echostr] if valid?
-		render text: "error"
+		return render plain: params[:echostr] if valid?
+		render plain: "error"
 	end
 
 	private
@@ -10,6 +10,7 @@ class WxController < ApplicationController
 	def valid?
 		return false if params.blank?
 
+    binding.pry
 		signature = params[:signature]
     timestamp = params[:timestamp]
     nonce = params[:nonce]
