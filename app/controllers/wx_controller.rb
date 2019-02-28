@@ -8,12 +8,19 @@ class WxController < ApplicationController
   end
 
   def handle
-    Rails.logger.info("params: ===>" + params.inspect)
-    xml_data = request.body.read
-    Rails.logger.info("body: ===>" + xml_data.inspect)
-    Rails.logger.info("xml: ===>" + Hash.from_xml(xml_data)['xml'])
+    # xml_data example
+    # {
+    #   "ToUserName"=>"gh_532c79846a36",
+    #   "FromUserName"=>"ol3bp1faQ4wZraeEuivyNT6Alssw",
+    #   "CreateTime"=>"1551354824",
+    #   "MsgType"=>"text",
+    #   "Content"=>"在",
+    #   "MsgId"=>"22210060061293467"
+    # }
+    xml_data = Hash.from_xml(request.body.read).with_indifferent_access[:xml]
+    logger.info(xml_data.inspect)
 
-    render plain: 'success'
+    render WxMsgService.new(xml_data).send
   end
 
 	private
