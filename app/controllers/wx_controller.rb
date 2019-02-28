@@ -1,5 +1,7 @@
 class WxController < ApplicationController
 
+  skip_before_action :verify_authenticity_token
+
 	def index
 		return render plain: params[:echostr] if valid?
 		render plain: "error"
