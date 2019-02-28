@@ -3,7 +3,11 @@ class WxController < ApplicationController
 	def index
 		return render plain: params[:echostr] if valid?
 		render plain: "error"
-	end
+  end
+
+  def handle
+    Rails.logger.info("params: ===>" + params.inspect)
+  end
 
 	private
 

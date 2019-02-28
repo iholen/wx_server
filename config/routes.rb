@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   root "welcome#index"
 
   resources :wx, only: :index
+  post "/wx", to: "wx#handle", as: "wx"
 end
