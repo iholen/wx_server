@@ -10,7 +10,6 @@ class WxController < ApplicationController
 	def valid?
 		return false if params.blank?
 
-    binding.pry
 		signature = params[:signature]
     timestamp = params[:timestamp]
     nonce = params[:nonce]
