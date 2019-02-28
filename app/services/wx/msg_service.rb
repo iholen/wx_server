@@ -8,7 +8,7 @@ class Wx::MsgService
     self.xml_data = xml_data
   end
 
-  def send
+  def get_msg
     text_msg(xml_data[:FromUserName], xml_data[:ToUserName], xml_data[:CreateTime], xml_data[:Content])
   end
 

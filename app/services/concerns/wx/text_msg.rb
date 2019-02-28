@@ -1,13 +1,15 @@
 module Wx::TextMsg
   extend ActiveSupport::Concern
 
+  # """
   # <xml>
-  #   <ToUserName><![CDATA[toUser]]></ToUserName>
-  #   <FromUserName><![CDATA[fromUser]]></FromUserName>
+  #   <ToUserName><![CDATA[123]]></ToUserName>
+  #   <FromUserName><![CDATA[456]]></FromUserName>
   #   <CreateTime>12345678</CreateTime>
   #   <MsgType><![CDATA[text]]></MsgType>
   #   <Content><![CDATA[你好]]></Content>
   # </xml>
+  # """
   def text_msg(to_user, from_user, create_time, text)
     """
     <xml>

@@ -7,20 +7,23 @@ class WxController < ApplicationController
 		render plain: "error"
   end
 
+  # xml_data example
+  # {
+  #   "ToUserName"=>"gh_532c79846a36",
+  #   "FromUserName"=>"ol3bp1faQ4wZraeEuivyNT6Alssw",
+  #   "CreateTime"=>"1551354824",
+  #   "MsgType"=>"text",
+  #   "Content"=>"在",
+  #   "MsgId"=>"22210060061293467"
+  # }
   def handle
-    # xml_data example
-    # {
-    #   "ToUserName"=>"gh_532c79846a36",
-    #   "FromUserName"=>"ol3bp1faQ4wZraeEuivyNT6Alssw",
-    #   "CreateTime"=>"1551354824",
-    #   "MsgType"=>"text",
-    #   "Content"=>"在",
-    #   "MsgId"=>"22210060061293467"
-    # }
     xml_data = Hash.from_xml(request.body.read).with_indifferent_access[:xml]
     logger.info(xml_data.inspect)
 
-    render WxMsgService.new(xml_data).send
+    msg = Wx::MsgService.new(xml_data).get_msg
+    logger.info(msg)
+
+    render plain: msg
   end
 
 	private
