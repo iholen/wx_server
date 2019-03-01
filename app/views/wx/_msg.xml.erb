@@ -1,0 +1,7 @@
+<xml>
+  <ToUserName><![CDATA[<%= @xml_data[:FromUserName] %>]]></ToUserName>
+  <FromUserName><![CDATA[<%= @xml_data[:ToUserName] %>]]></FromUserName>
+  <CreateTime>#{<%= @xml_data[:CreateTime] %>}</CreateTime>
+  <MsgType><![CDATA[text]]></MsgType>
+  <Content><![CDATA[<%= @xml_data[:Content] %>]]></Content>
+</xml>

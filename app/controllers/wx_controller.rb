@@ -17,13 +17,10 @@ class WxController < ApplicationController
   #   "MsgId"=>"22210060061293467"
   # }
   def handle
-    xml_data = Hash.from_xml(request.body.read).with_indifferent_access[:xml]
-    logger.info(xml_data.inspect)
+    @xml_data = Hash.from_xml(request.body.read).with_indifferent_access[:xml]
+    logger.info(@xml_data.inspect)
 
-    msg = Wx::MsgService.new(xml_data).get_msg
-    logger.info(msg)
-
-    render plain: msg
+    render partial: "wx/msg", layout: false, formats: :xml
   end
 
 	private
